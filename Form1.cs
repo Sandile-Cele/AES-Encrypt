@@ -28,6 +28,18 @@ namespace AES_Encrypt
             {
                 MessageBox.Show("Please enter text to encrypt", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            tbEncryption.Text = Encryption.Encrypt(tbUserString.Text);
+        }
+
+        private void btnDecrypt_Click(object sender, EventArgs e)
+        {
+            if (tbEncryption.Text.Equals(""))
+            {
+                MessageBox.Show("There is nothing to decrypt!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            tbEncryption.Text = Encryption.Decrypt();
         }
     }
 }

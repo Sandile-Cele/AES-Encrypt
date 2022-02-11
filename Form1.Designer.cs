@@ -35,6 +35,7 @@ namespace AES_Encrypt
             this.tbEncryption = new System.Windows.Forms.TextBox();
             this.btnEncrypt = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.btnDecrypt = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -59,9 +60,9 @@ namespace AES_Encrypt
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(40, 157);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 15);
+            this.label2.Size = new System.Drawing.Size(64, 15);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Encryption: ";
+            this.label2.Text = "Encryption";
             // 
             // tbEncryption
             // 
@@ -92,11 +93,22 @@ namespace AES_Encrypt
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // btnDecrypt
+            // 
+            this.btnDecrypt.Location = new System.Drawing.Point(325, 262);
+            this.btnDecrypt.Name = "btnDecrypt";
+            this.btnDecrypt.Size = new System.Drawing.Size(75, 23);
+            this.btnDecrypt.TabIndex = 6;
+            this.btnDecrypt.Text = "Decrypt";
+            this.btnDecrypt.UseVisualStyleBackColor = true;
+            this.btnDecrypt.Click += new System.EventHandler(this.btnDecrypt_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(446, 285);
+            this.ClientSize = new System.Drawing.Size(446, 303);
+            this.Controls.Add(this.btnDecrypt);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnEncrypt);
             this.Controls.Add(this.tbEncryption);
@@ -118,6 +130,7 @@ namespace AES_Encrypt
         private System.Windows.Forms.TextBox tbEncryption;
         private System.Windows.Forms.Button btnEncrypt;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnDecrypt;
     }
 }
 
