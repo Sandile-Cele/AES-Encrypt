@@ -17,5 +17,17 @@ namespace AES_Encrypt
             InitializeComponent();
         }
 
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            tbUserString.Text = string.Empty;
+        }
+
+        private void btnEncrypt_Click(object sender, EventArgs e)
+        {
+            if (tbUserString.Text.Equals(""))
+            {
+                MessageBox.Show("Please enter text to encrypt", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
