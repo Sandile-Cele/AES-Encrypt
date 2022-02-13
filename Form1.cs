@@ -12,6 +12,9 @@ namespace AES_Encrypt
 {
     public partial class Form1 : Form
     {
+        Encryption encryption = new();
+        byte[] lastEncryption;
+
         public Form1()
         {
             InitializeComponent();
@@ -29,7 +32,9 @@ namespace AES_Encrypt
                 MessageBox.Show("Please enter text to encrypt", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            tbEncryption.Text = Encryption.Encrypt(tbUserString.Text);
+            lastEncryption = encryption.Encrypt(tbUserString.Text);
+
+            tbEncryption.Text = BitConverter.ToString(lastEncryption);
         }
 
         private void btnDecrypt_Click(object sender, EventArgs e)
@@ -39,7 +44,7 @@ namespace AES_Encrypt
                 MessageBox.Show("There is nothing to decrypt!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            tbEncryption.Text = Encryption.Decrypt();
+            tbEncryption.Text = encryption.Decrypt(lastEncryption);
         }
     }
 }

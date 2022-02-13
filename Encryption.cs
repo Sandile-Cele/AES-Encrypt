@@ -10,37 +10,32 @@ namespace AES_Encrypt
 {
     class Encryption
     {
-        private static byte[] lastEncyption, lastKey, lastIV;
+        Aes myAes = null;
 
-        public static string Encrypt(string inputText)
+        private Aes getAes()
         {
-            using (Aes myAes = Aes.Create())
+
+            //Checking if obj is created
+            if(myAes == null)
             {
-                myAes.KeySize = 256;
-                myAes.Mode = CipherMode.CBC;
-
-                lastIV = myAes.IV;
-                lastKey = myAes.Key;
-
-                byte[] encrypted = EncryptStringToBytes_Aes(inputText, myAes.Key, myAes.IV);
-                lastEncyption = encrypted;
-
-                string bitString = BitConverter.ToString(encrypted);
-
-                return bitString;
+                myAes = Aes.Create();
             }
+
+            return myAes;
+
         }
 
-        public static string Decrypt() 
+        public byte[] Encrypt(string inputText)
         {
-            using (Aes myAes = Aes.Create())
-            {
-                string decrypt = DecryptStringFromBytes_Aes(lastEncyption, lastKey, lastIV);
-                return decrypt;
-            }
+            return EncryptStringToBytes_Aes(inputText, getAes().Key, getAes().IV);
         }
 
-        private static byte[] EncryptStringToBytes_Aes(string plainText, byte[] Key, byte[] IV)
+        public string Decrypt(byte[] inEncrypt) 
+        {
+            return DecryptStringFromBytes_Aes(inEncrypt, getAes().Key, getAes().IV);
+        }
+
+        private byte[] EncryptStringToBytes_Aes(string plainText, byte[] Key, byte[] IV)
         {
             // Check arguments.
             if (plainText == null || plainText.Length <= 0)
@@ -80,7 +75,7 @@ namespace AES_Encrypt
             return encrypted;
         }
 
-        static string DecryptStringFromBytes_Aes(byte[] cipherText, byte[] Key, byte[] IV)
+        private string DecryptStringFromBytes_Aes(byte[] cipherText, byte[] Key, byte[] IV)
         {
             // Check arguments.
             if (cipherText == null || cipherText.Length <= 0)
